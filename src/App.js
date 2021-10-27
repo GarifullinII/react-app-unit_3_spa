@@ -8,6 +8,12 @@ import CategoryDescription from "./CategoryDescription";
 import Error from "./Error";
 import "./App.css";
 
+const dataCat = [
+    {"to": "/notebook", "text": "Ноутбуки"},
+    {"to": "/monitor", "text": "Мониторы"},
+    {"to": "/cellphone", "text": "Мобильные телефоны"},
+]
+
 function App() {
   return (
     <>
@@ -23,7 +29,7 @@ function App() {
         <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
-            <Route exact  path="/cat" component={Category}/>
+            <Route exact path="/cat" component={Category}><Category dataCat = {dataCat}/></Route>
             <Route path="/cat/:Name" component={CategoryDescription}/>
             <Route component={Error}/>
         </Switch>
