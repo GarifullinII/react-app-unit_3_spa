@@ -1,8 +1,16 @@
+import {Link, useParams} from "react-router-dom";
+
 function CategoryDescription() {
+
+    let {Name} = useParams();
+
     return (
-        <h1>
-            Category: Name
-        </h1>
+        <>
+            <Link to="/cat">Назад</Link>
+            <h1>
+                Category: {Name}
+            </h1>
+        </>
     );
 }
 
