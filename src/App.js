@@ -8,6 +8,12 @@ import CategoryDescription from "./CategoryDescription";
 import Error from "./Error";
 import "./App.css";
 
+const dataHeader = [
+    {"to": "/", "text": "Главная"},
+    {"to": "/about", "text": "О сайте"},
+    {"to": "/cat", "text": "Категории"},
+]
+
 const dataCat = [
     {"to": "/notebook", "text": "Ноутбуки"},
     {"to": "/monitor", "text": "Мониторы"},
@@ -15,21 +21,22 @@ const dataCat = [
 ]
 
 function App() {
+
+    const itemHeader = dataHeader.map(item => <li key={item.text}><Link to={item.to}>{item.text}</Link></li>)
+
   return (
     <>
       {/*<Header/>*/}
       <Router>
           <nav>
               <ul>
-                  <li><Link to="/">Главная</Link></li>
-                  <li><Link to="/about">О сайте</Link></li>
-                  <li><Link to="/cat">Категории</Link></li>
+                  {itemHeader}
               </ul>
           </nav>
         <Switch>
             <Route exact path="/" component={Home}/>
             <Route path="/about" component={About}/>
-            <Route exact path="/cat" component={Category}><Category dataCat = {dataCat}/></Route>
+            <Route exact path="/cat" component={Category}><Category dataCat={dataCat}/></Route>
             <Route path="/cat/:Name" component={CategoryDescription}/>
             <Route component={Error}/>
         </Switch>
